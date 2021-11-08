@@ -34,11 +34,11 @@ defmodule VerkWeb.Mixfile do
 
   defp deps do
     [
-      {:phoenix, "~> 1.5.0"},
+      {:phoenix, "~> 1.6.0"},
       {:phoenix_pubsub, "~> 2.0"},
-      {:phoenix_html, "~> 2.6"},
+      {:phoenix_html, "~> 3.0"},
       {:gettext, "~> 0.16"},
-      {:verk, "~> 1.7.1"},
+      {:verk, github: "Recruitee/verk", branch: "bump-redix-1-1-4"},
       {:plug_cowboy, "~> 2.0"},
       {:plug, "~> 1.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},

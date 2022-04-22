@@ -1,15 +1,22 @@
 defmodule VerkWeb do
+  @moduledoc false
+
   use Application
 
   @doc false
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
-    children = [supervisor(VerkWeb.Endpoint, [])]
+    children = [
+      {VerkWeb.Endpoint, [type: :supervisor]},
+
+      # pub sub
+      {Phoenix.PubSub, [name: VerkWeb.PubSub, adapter: Phoenix.PubSub.PG2]}
+    ]
 
     children =
       if Application.get_env(:verk_web, :link_verk_supervisor, false) do
-        [supervisor(Verk.Supervisor, []) | children]
+        [{Verk.Supervisor, [type: :supervisor]} | children]
       else
         children
       end
